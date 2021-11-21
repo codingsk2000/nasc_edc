@@ -1,7 +1,5 @@
 window.onload = () => {
 
-
-
     const toggleBtn = document.querySelector('#btn-toggler');
     toggleBtn.addEventListener('click', () => {
         document.querySelector('#btn-toggler i').classList.toggle('fa-times');
@@ -13,8 +11,6 @@ window.onload = () => {
             document.querySelector('.navbar').classList.remove('active');
         });
     });
-
-
 
     window.onscroll = () => {
         document.querySelector('.navbar').classList.remove('active');

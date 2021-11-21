@@ -35,6 +35,7 @@
 
     </header>
     <!-- navbar section end -->
+    
     <!-- banner section start -->
     <section class="banner">
         <div class="content">
@@ -47,63 +48,65 @@
     </section>
 
     <!-- banner section end -->
+
     <!-- register form section start -->
     <section class="register-form" id="register">
-            <h3>Register for <span>EDC</span></h3>
-            <div class="form-container">
-                <h3>Fill your details</h3>
-                <form>
-                    <div class="form-controller">
-                        <label for="registerNo">Register No.</label>
-                        <input type="text" required id="registerNo" placeholder="Enter Your Register No." value="">
-                    </div>
-                    <div class="form-controller">
-                        <label for="name">Name</label>
-                        <input type="text" required id="name" placeholder="Enter Your Name" value="">
-                    </div>
-                    <div class="form-controller">
-                        <label for="email">email</label>
-                        <input type="email" required id="email" placeholder="Enter Your Email" value="">
-                    </div>
-                    <div class="form-controller">
-                        <label for="mobile">mobile</label>
-                        <input type="text" required id="mobile" placeholder="Enter Your contact No." value="">
-                    </div>
-                    <div class="form-controller">
-                        <label>Department</label>
-                        <select id="department" required>
-                            <option>select Department</option>
-                            <option value="bca">BCA</option>
-                            <option value="bba">BBA</option>
-                            <option value="CSHM">CSHM</option>
-                        </select>
-                    </div>
-                    <div class="form-controller">
-                        <label>Year</label>
-                        <select id="year" required>
-                            <option>select Year</option>
-                            <option value="1">1st</option>
-                            <option value="2">2nd</option>
-                            <option value="3">3rd</option>
-                            <option value="4">4th</option>
+        <h3>Register for <span>EDC</span></h3>
+        <div class="form-container">
+            <h3>Fill your details</h3>
+            <form>
+                <div class="form-controller">
+                    <label for="registerNo">Register No.</label>
+                    <input type="text" required id="registerNo" placeholder="Enter Your Register No." value="">
+                </div>
+                <div class="form-controller">
+                    <label for="name">Name</label>
+                    <input type="text" required id="name" placeholder="Enter Your Name" value="">
+                </div>
+                <div class="form-controller">
+                    <label for="email">email</label>
+                    <input type="email" required id="email" placeholder="Enter Your Email" value="">
+                </div>
+                <div class="form-controller">
+                    <label for="mobile">mobile</label>
+                    <input type="text" required id="mobile" placeholder="Enter Your contact No." value="">
+                </div>
+                <div class="form-controller">
+                    <label>Department</label>
+                    <select id="department" required>
+                        <option>select Department</option>
+                        <option value="bca">BCA</option>
+                        <option value="bba">BBA</option>
+                        <option value="CSHM">CSHM</option>
+                    </select>
+                </div>
+                <div class="form-controller">
+                    <label>Year</label>
+                    <select id="year" required>
+                        <option>select Year</option>
+                        <option value="1">1st</option>
+                        <option value="2">2nd</option>
+                        <option value="3">3rd</option>
+                        <option value="4">4th</option>
 
-                        </select>
-                    </div>
-                    <div class="form-controller">
-                        <label>Course</label>
-                        <select required id="course">
-                            <option>Select course</option>
-                            <option value="bca">soft skills</option>
-                            <option value="bba">Mathematics for competation</option>
-                            <option value="CSHM">everyday physics</option>
-                        </select>
-                    </div>
-                    <input type="button" class="next-btn" id="submit-btn" value="Next">
-                    <input type="submit" id="final-submit-btn" value="Submit">
-                </form>
-            </div>
+                    </select>
+                </div>
+                <div class="form-controller">
+                    <label>Course</label>
+                    <select required id="course">
+                        <option>Select course</option>
+                        <option value="bca">soft skills</option>
+                        <option value="bba">Mathematics for competation</option>
+                        <option value="CSHM">everyday physics</option>
+                    </select>
+                </div>
+                <input type="button" class="next-btn" id="submit-btn" value="Next">
+                <input type="submit" id="final-submit-btn" value="Submit">
+            </form>
+        </div>
     </section>
     <!-- register form section end -->
+
     <!-- confirm dialog section start -->
     <section class="dialog">
         <div class="dialog-content">
@@ -114,6 +117,7 @@
         </div>
     </section>
     <!-- confirm dialog section end -->
+
     <footer>
         <p>copyright &copy; <span id="footerDate"></span>| All Rights Reserved</p>
     </footer>
@@ -121,17 +125,17 @@
     <!-- custom js file -->
     <script src="./assets/js/custom.js"></script>
     <script>
-          document.querySelector('#submit-btn').onclick = () => {
-                document.querySelector('.dialog').classList.add('active');
-                document.querySelector('#final-submit-btn').classList.add('active');
-                document.querySelector('#submit-btn').classList.add('disabled');
-            };
-            document.querySelector('#close').onclick = () => {
-                document.querySelector('.dialog').classList.remove('active');
+        document.querySelector('#submit-btn').onclick = () => {
+            document.querySelector('.dialog').classList.add('active');
+            document.querySelector('#final-submit-btn').classList.add('active');
+            document.querySelector('#submit-btn').classList.add('disabled');
+        };
+        document.querySelector('#close').onclick = () => {
+            document.querySelector('.dialog').classList.remove('active');
 
-            };
+        };
     </script>
-   
+
 </body>
 
 </html>

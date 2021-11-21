@@ -49,7 +49,7 @@
                     <label for="password">PIN</label>
                     <input type="password" required id="password" placeholder="Enter Your Pin" value="">
                 </div>
-               
+
                 <input type="button" class="login-btn" id="login-btn" value="Get In">
                 <p>Not registered?<a href="./index.html"> register here</a></p>
             </form>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="form-controller">
                     <label>mobile</label>
-                    <input type="text" id="mobile"  value="">
+                    <input type="text" id="mobile" value="">
                 </div>
                 <div class="form-controller">
                     <label>Department</label>
@@ -86,7 +86,7 @@
                     <label>Course</label>
                     <input type="text" id="course" value="">
                 </div>
-               <a href="./dashboard.html" class="btn-logout">Log out</a>
+                <a href="./dashboard.html" class="btn-logout">Log out</a>
             </form>
         </div>
     </section>
@@ -99,15 +99,15 @@
     <!-- custom js file -->
     <script src="./assets/js/custom.js"></script>
     <script>
-            // dashboard form section start
-                const loginForm = document.querySelector('.login-form');
-                const userDetails = document.querySelector('.user-details');
+        // dashboard form section start
+        const loginForm = document.querySelector('.login-form');
+        const userDetails = document.querySelector('.user-details');
 
-                document.querySelector('#login-btn').addEventListener('click', () => {
-                    loginForm.classList.remove('active');
-                    userDetails.classList.add('active');
-                });
-            
+        document.querySelector('#login-btn').addEventListener('click', () => {
+            loginForm.classList.remove('active');
+            userDetails.classList.add('active');
+        });
+
     </script>
 </body>
 

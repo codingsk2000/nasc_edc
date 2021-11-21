@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASC-EDC Department Home Page</title>
+    <!-- datatables cdn link -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <!-- custom css file -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="">
+                    <p>NASC <span>EDC</span></p>
+                    <small>Department head</small>
+                </a>
+            </div>
+            <form action="" class="search-form">
+                <div class="form-controller">
+                    <input type="text" name="search" id="search" placeholder="Search..">
+                    <input type="button" id="search-btn" value="Search">
+                </div>
+            </form>
+            <button class="toggle-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul>
+                <li class="profile-btn"><a href="javascript:void(0)"><img src="./assets/images/nasc-image.jpg"
+                            alt="profile"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="profile-menu">
+        <ul>
+            <li><a href=""><i class="fas fa-user-cog"></i> setting</a></li>
+            <li><a href=""><i class="fas fa-sign-out-alt"></i> logout </a></li>
+        </ul>
+    </div>
+    <!-- left box start -->
+    <section class="left-box">
+        <ul>
+            <li class="active"><a href="./index.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
+            </li>
+            <li><a href="./student.html"><i class="fas fa-users"></i> <span>students</span></a></li>
+            <li><a href="#"><i class="fas fa-building"></i> <span>Department</span></a></li>
+            <li><a href="#"><i class="fas fa-user-graduate"></i> <span>courses</span></a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> <span>settings</span></a></li>
+            <li><a href="#"><i class="fas fa-sign-out-alt"></i> <span>logout</span></a></li>
+
+        </ul>
+    </section>
+    <!-- left box end -->
+    <!-- right box start -->
+    <section class="right-box">
+        <div class="data-table">
+            <table id="table" class="display">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Register no</th>
+                        <th>Name</th>
+                        <th>mobile</th>
+                        <th>year</th>
+                        <th>course</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Row 1 Data 2</td>
+                        <td>Row 1 Data 1</td>
+                        <td>Row 1 Data 2</td>
+                        <td>Row 1 Data 2</td>
+                        <td>Row 1 Data 1</td>
+                        <td>Row 1 Data 2</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Row 2 Data 2</td>
+                        <td>Row 1 Data 1</td>
+                        <td>Row 1 Data 2</td>
+                        <td>Row 1 Data 1</td>
+                        <td>Row 1 Data 2</td>
+                        <td>Row 1 Data 2</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Row 2 Data 2</td>
+                        <td>Row 1 Data 1</td>
+                        <td>Row 1 Data 2</td>
+                        <td>Row 1 Data 1</td>
+                        <td>Row 1 Data 2</td>
+                        <td>Row 1 Data 2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+    <!-- right box end -->
+
+    <!-- footer section start -->
+    <footer class="footer">
+        <p>copyright &copy; <span class="footer-date"></span>| All rights reserved</p>
+    </footer>
+
+    <!-- footer section end -->
+
+<!-- jquery cdn -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+
+<!-- custom js file -->
+    <script src="./assets/js/custom.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable({
+                responsive:true
+            });
+        });
+    </script>
+    
+</body>
+
+</html>
