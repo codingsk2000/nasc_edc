@@ -61,51 +61,23 @@
     <!-- left box end -->
     <!-- right box start -->
     <section class="right-box">
-        <h1>students <i class="fas fa-chevron-right"></i></h1>
+        <h1>settings <i class="fas fa-chevron-right"></i></h1>
 
-        <div class="data-table">
-            <table id="table" class="display">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Register no</th>
-                        <th>Name</th>
-                        <th>mobile</th>
-                        <th>year</th>
-                        <th>course</th>
-                        <th>action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Row 1 Data 2</td>
-                        <td>Row 1 Data 1</td>
-                        <td>Row 1 Data 2</td>
-                        <td>Row 1 Data 2</td>
-                        <td>Row 1 Data 1</td>
-                        <td>Row 1 Data 2</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Row 2 Data 2</td>
-                        <td>Row 1 Data 1</td>
-                        <td>Row 1 Data 2</td>
-                        <td>Row 1 Data 1</td>
-                        <td>Row 1 Data 2</td>
-                        <td>Row 1 Data 2</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Row 2 Data 2</td>
-                        <td>Row 1 Data 1</td>
-                        <td>Row 1 Data 2</td>
-                        <td>Row 1 Data 1</td>
-                        <td>Row 1 Data 2</td>
-                        <td>Row 1 Data 2</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="profile-form">
+            <h1>Update details</h1>
+            <div class="setting-form">
+                <form action="">
+                    <div class="form-controller">
+                        <label for="name">Username</label>
+                        <input type="email" name="username" id="name" required placeholder="Enter Username">
+                    </div>
+                    <div class="form-controller">
+                        <label for="password">password</label>
+                        <input type="password" name="password" id="password" required placeholder="Enter password">
+                    </div>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
         </div>
 
     </section>
@@ -118,20 +90,14 @@
 
     <!-- footer section end -->
 
-<!-- jquery cdn -->
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 
-<!-- custom js file -->
+    <!-- custom js file -->
     <script src="./assets/js/custom.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#table').DataTable({
-                responsive:true
-            });
-        });
-    </script>
-    
+
 </body>
 
 </html>

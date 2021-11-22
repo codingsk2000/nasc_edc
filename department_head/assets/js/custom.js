@@ -1,4 +1,5 @@
 window.onload = () => {
+
     document.querySelector('.profile-btn').onclick = () => {
         document.querySelector('.profile-menu').classList.toggle('active');
     };

@@ -60,6 +60,7 @@ a{
   letter-spacing: .2rem;
   text-align: center;
   margin: 0 auto;
+  transition: all .2s linear;
 }
 .btn-main i{
   padding-left: 1rem;
@@ -114,6 +115,9 @@ p{
 }
 .navbar li{
   padding: .5rem .8rem;
+}
+.navbar li.active a{
+  color: var(--orange)!important;
 }
 .navbar li#dashboard{
   display: none;
@@ -409,6 +413,37 @@ footer p{
 
 /* dashboard page style end */
 
+/* department pages css start */
+
+.department-list{
+  background: #dde2e8;
+  width: 100%;
+  padding: 2rem 5rem;
+}
+.department-list h1{
+  text-align: center;
+  font-size: 3rem;
+  padding: 2rem 0;
+}
+.department-list h1 span{
+  color: var(--orange);
+}
+.department-list .all-list ul{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3.5rem;
+}
+.department-list .all-list li{
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 1rem 3.5rem 2rem;
+
+}
+.department-list .all-list li i{
+  padding-right: .5rem;
+}
+/* departmetn page css end */
+
 
 /* media query section */
 
@@ -463,6 +498,9 @@ footer p{
   .register-form .form-container,.login-form .form-container,.user-details .form-container{
     width: 80%;
   }
+  .department-list .all-list ul{
+    justify-content: center;
+  } 
   
 }
 
@@ -483,4 +521,9 @@ footer p{
     font-size: 1.8rem;
     letter-spacing: .1rem;
   }
+
+  .department-list{
+    padding: 2rem 1.5rem;
+  }
+  
 }

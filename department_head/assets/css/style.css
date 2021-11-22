@@ -130,6 +130,9 @@ p{
 .header .navbar ul{
   margin-right: 5rem;
 }
+.header .navbar li{
+  list-style: none;
+}
 .header ul li:first-child img{
   background: var(--white);
   width: 4rem;
@@ -236,7 +239,11 @@ p{
   display: block;
   font-size: 1.8rem;
   padding-left: 3.5rem; 
+  transition: all .2s linear;
 
+}
+.left-box li:hover a{
+  color: var(--orange)!important;
 }
 .left-box li a i{
   padding-right: .8rem;
@@ -248,7 +255,7 @@ p{
 .right-box{
   width: 83%;
   background: var(--white);
-  min-height: 100vh;
+  /* min-height: 100vh; */
   margin-left:17% ;
   padding: 10rem 2rem 1rem;
   display: flex;
@@ -257,8 +264,22 @@ p{
   transition: all .2s linear;
 }
 .right-box.active{
-  width: calc(100%-7%);
+  width: calc(100% - 10%);
+  /* width: 100%; */
   margin-left:7% ;
+}
+.right-box-title h1{
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.right-box-title a{
+  color: var(--orange)!important;
+  display: inline-block;
+  text-decoration: underline!important;
+  margin-top: 1rem;
+  font-size:1.7rem;
+  text-underline-offset: .2rem;
 }
 .right-box .card{
     background:var(--white);
@@ -286,6 +307,60 @@ p{
 }
 
 /* right section end */
+/* datatables section start */
+.right-box .data-table{
+  width: 100%;
+  padding: 2rem 1.5rem;
+  overflow-x: auto!important;
+  margin-top: 2rem;
+}
+.right-box .data-table table{
+  font-size: 1.3rem;
+  text-align: center;
+  overflow-x: auto;
+}
+/* datatables section end */
+/* setting sectino start */
+.profile-form{
+  width: 100%;
+  margin-top: 5rem;
+}
+.profile-form .setting-form{
+  width: 50%;
+  margin: 2rem auto;
+  box-shadow: var(--box-shadow);
+  padding: 2rem 3rem;
+  border-radius: .5rem;
+}
+.profile-form h1{
+  text-align: center;
+  font-size: 2.5rem;
+}
+.profile-form .setting-form .form-controller{
+  margin: 1rem 0;
+}
+.profile-form .setting-form form label{
+  font-size: 1.5rem;
+  letter-spacing: .1rem;
+}
+.profile-form .setting-form input{
+  width: 100%;
+  border: .1px solid rgba(0,0,0,0.5);
+  margin-top:.5rem ;
+  padding: .8rem 1rem;
+  border-radius: .2rem;
+  font-size: 1.5rem;
+}
+
+.profile-form .setting-form input[type='submit']{
+  background: var(--orange);
+  color: var(--white);
+  border-color:transparent;
+}
+
+
+
+
 
 /* footer section start */
  .footer{
@@ -295,6 +370,8 @@ p{
   z-index: -1000;
   text-align: center;
   margin-left: 18%;
+  position: fixed;
+  bottom: 0;
 
 } 
 .footer p{
@@ -302,18 +379,16 @@ p{
 } 
 /* footer section end */
 
-/* datatables section start */
-.right-box .data-table{
-  width: 100%;
-  padding: 2rem 1.5rem;
-  overflow-x: auto!important;
-}
-.right-box .data-table table{
-  font-size: 1.3rem;
-  text-align: center;
-  overflow-x: auto;
-}
-/* datatables section end */
+
+
+
+
+
+
+
+
+
+
 
 /* media query section */
 @media (max-width:990px){
@@ -352,7 +427,7 @@ p{
     float: left;
   }
   .right-box{
-    justify-content: center;
+    justify-content: flex-start;
     margin-left: 8rem;
   }
   .right-box .card{
@@ -366,6 +441,12 @@ p{
 
   .header ul li:first-child img{
     display: none;
+  }
+
+  /* setting from section */
+  .profile-form .setting-form{
+    width: 90%;
+  
   }
 
 }
