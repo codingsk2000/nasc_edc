@@ -236,7 +236,7 @@ p{
   font-size: 1.5rem;
   font-weight: 500;
 }
-.form-container .form-controller input,.form-container .form-controller select{
+.form-container .form-controlindexler input,.form-container .form-controller select{
   width: 100%;
   border: 1px solid var(--text-secondary);
   margin-top: 1rem;
