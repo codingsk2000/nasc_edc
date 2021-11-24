@@ -75,6 +75,22 @@ h1,h2,h3,h4,h5{
 p{
   color: var(--text-secondary);
 }
+.msg{
+  background: #08310c;
+  width: 100%;
+  margin-top: 3rem;
+  padding: 1rem 2rem;
+  border-radius: .2rem;
+  color: var(--white);
+  font-size: 1.8rem;
+}
+.close-btn{
+  display: inline-block;
+  color: var(--black)!important;
+  padding: 1rem 2rem;
+  border: 1px solid rgba(0,0,0,0.5);
+  margin-top: 1.5rem;
+}
 /* common css end */
 
 /* header section start */
@@ -319,6 +335,17 @@ p{
   text-align: center;
   overflow-x: auto;
 }
+.right-box .data-table tbody tr a{
+  display: inline-block;
+  margin-right:.8rem;
+  color: #000000!important;
+}
+.right-box .data-table tbody tr a#edit{
+  color: #002147!important;
+}
+.right-box .data-table tbody tr a#delete{
+  color: #c40505!important;
+}
 /* datatables section end */
 /* setting sectino start */
 .profile-form{
@@ -351,7 +378,13 @@ p{
   border-radius: .2rem;
   font-size: 1.5rem;
 }
-
+.from-btn-section{
+  display: fle;
+}
+.profile-form .from-btn-section input{
+  width: 15rem;
+  padding: 1rem 2rem;
+}
 .profile-form .setting-form input[type='submit']{
   background: var(--orange);
   color: var(--white);
@@ -399,6 +432,7 @@ p{
   padding: 1rem 1.5rem;
   border: 1px solid rgba(0,0,0,0.5);
   background: transparent;
+  text-transform: lowercase;
 }
 
 .login .login-form .remember-me{

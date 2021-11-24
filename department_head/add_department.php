@@ -1,3 +1,44 @@
+<?php
+require_once('../api/config.php');
+
+$obj = new API();
+if (!isset($_SESSION['token'])) {
+    $obj->redirect('login.php');
+}
+
+if (isset($_POST['add_department']) && $_POST['update'] == '') {
+    $department = $_POST['department'];
+    $date = date('y-m-d h:i:s');
+
+    $result = $obj->insertData('department', array('dep_name' => $department, 'created_at' => $date));
+    if ($result) {
+        $msg = "department added successfully";
+    } else {
+        $msg = "please try again";
+    }
+}
+
+
+// update code
+if (isset($_POST['add_department']) && $_POST['update'] != '') {
+
+    $result = $obj->updateData('department', array('dep_name' => $_POST['department']), 'id', $_GET['id']);
+    if ($result) {
+        $msg = 'data update successfully';
+    } else {
+        $msg = 'data not updated';
+    }
+}
+
+// update code
+if (isset($_GET['type']) && $_GET['type'] == 'edit' && isset($_GET['id'])) {
+
+    $update_val = $obj->getData('department', 'dep_name', array('id' => $_GET['id']));
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,8 +75,7 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul>
-                <li class="profile-btn"><a href="javascript:void(0)"><img src="./assets/images/nasc-image.jpg"
-                            alt="profile"></a></li>
+                <li class="profile-btn"><a href="javascript:void(0)"><img src="./assets/images/nasc-image.jpg" alt="profile"></a></li>
             </ul>
         </nav>
     </header>
@@ -62,40 +102,32 @@
     <!-- right box start -->
     <section class="right-box">
         <div class="right-box-title">
-            <h1>Departments <i class="fas fa-chevron-right"></i></h1>
-            <a href="./add-department.html">Add Department</a>
+            <h1>add Departments <i class="fas fa-chevron-right"></i></h1>
         </div>
-        <div class="data-table">
-            <table id="table" class="display">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Department</th>
-                        <th>No. of courses offers</th>
-                        <th>action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Row 1 Data 2</td>
-                        <td>Row 1 Data 1</td>
-                        <td>Row 1 Data 2</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Row 1 Data 1</td>
-                        <td>Row 1 Data 2</td>
-                        <td>Row 1 Data 2</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Row 1 Data 1</td>
-                        <td>Row 1 Data 2</td>
-                        <td>Row 1 Data 2</td>
-                    </tr>
-                </tbody>
-            </table>
+
+        <?php if (isset($msg)) {
+            echo "<div class='msg'> $msg </div>";
+        } ?>
+
+        <div class="profile-form">
+            <h1>department details</h1>
+            <div class="setting-form">
+                <form method="post" autocomplete="off">
+                    <div class="form-controller">
+                        <label for="course">department Name</label>
+                        <input type="text" name="department" value="<?php if (isset($update_val)) {
+                                                                        echo $update_val[0]['name'];
+                                                                    } ?>" id="course" required placeholder="Enter department Name">
+                    </div>
+                    <input type="hidden" name="update" value="<?php if (isset($update_val)) {
+                                                                    echo 'true';
+                                                                } ?>">
+                    <div class="from-btn-section">
+                        <input type="submit" name="add_department" value="add department">
+                        <a href="./department" class="close-btn">close</a>
+                    </div>
+                </form>
+            </div>
         </div>
 
     </section>
@@ -107,21 +139,8 @@
     </footer>
 
     <!-- footer section end -->
-
-    <!-- jquery cdn -->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-
     <!-- custom js file -->
     <script src="./assets/js/custom.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#table').DataTable({
-                responsive: true
-            });
-        });
-    </script>
 
 </body>
 

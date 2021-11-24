@@ -34,8 +34,7 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul>
-                <li class="profile-btn"><a href="javascript:void(0)"><img src="./assets/images/nasc-image.jpg"
-                            alt="profile"></a></li>
+                <li class="profile-btn"><a href="javascript:void(0)"><img src="./assets/images/nasc-image.jpg" alt="profile"></a></li>
             </ul>
         </nav>
     </header>
@@ -48,13 +47,12 @@
     <!-- left box start -->
     <section class="left-box">
         <ul>
-            <li class="active"><a href="./index.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
-            </li>
+            <li class="active"><a href="./index.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
             <li><a href="./student.html"><i class="fas fa-users"></i> <span>students</span></a></li>
             <li><a href="./departmet.html"><i class="fas fa-building"></i> <span>Department</span></a></li>
             <li><a href="./courses.html"><i class="fas fa-user-graduate"></i> <span>courses</span></a></li>
-            <li><a href="setting.html"><i class="fas fa-cog"></i> <span>settings</span></a></li>
-            <li><a href="#"><i class="fas fa-sign-out-alt"></i> <span>logout</span></a></li>
+            <li><a href="./setting.html"><i class="fas fa-cog"></i> <span>settings</span></a></li>
+            <li><a href="./login"><i class="fas fa-sign-out-alt"></i> <span>logout</span></a></li>
 
         </ul>
     </section>
@@ -62,30 +60,30 @@
     <!-- right box start -->
     <section class="right-box">
         <div class="right-box-title">
-            <h1>Departments <i class="fas fa-chevron-right"></i></h1>
-            <a href="./add-course.html">Add course</a>
+            <h1>Dashboard <i class="fas fa-chevron-right"></i></h1>
         </div>
+        <!-- datatable start -->
         <div class="data-table">
             <table id="table" class="display">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>departmet</th>
-                        <th>EDC courses</th>
+                        <th>EDC Courses</th>
+                        <th>total students registered</th>
                         <th>action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Row 1 Data 2</td>
                         <td>Row 1 Data 1</td>
+                        <td>Row 1 Data 2</td>
                         <td>Row 1 Data 2</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Row 2 Data 2</td>
                         <td>Row 1 Data 1</td>
+                        <td>Row 1 Data 2</td>
                         <td>Row 1 Data 2</td>
                     </tr>
                     <tr>
@@ -98,6 +96,39 @@
             </table>
         </div>
 
+        <!-- datatable end -->
+
+        <div class="card">
+            <div class="icon">
+                <i class="fas fa-users fa-5x"></i>
+            </div>
+            <div class="content">
+                <small>Registerd Students</small>
+                <h3>200</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="icon">
+                <i class="fas fa-building fa-5x"></i>
+            </div>
+            <div class="content">
+                <small>total Departments</small>
+                <h3>200</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="icon">
+                <i class="fas fa-user-graduate fa-5x"></i>
+            </div>
+            <div class="content">
+                <small>total courses</small>
+                <h3>2000000</h3>
+            </div>
+        </div>
+
+
     </section>
     <!-- right box end -->
 
@@ -107,22 +138,19 @@
     </footer>
 
     <!-- footer section end -->
-
     <!-- jquery cdn -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 
     <!-- custom js file -->
     <script src="./assets/js/custom.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#table').DataTable({
                 responsive: true
             });
         });
     </script>
-
 </body>
 
 </html>

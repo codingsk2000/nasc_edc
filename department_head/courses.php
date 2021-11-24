@@ -1,3 +1,25 @@
+<?php
+require_once('../api/config.php');
+
+$obj = new API();
+if (!isset($_SESSION['token'])) {
+    $obj->redirect('login.php');
+}
+$dp_id = $obj->getData('department_head','department',array('token'=>$_SESSION['token']));
+$result = $obj->getData('courses','*',array('department'=>$dp_id[0]['department']));
+// delete code
+if(isset($_GET['type']) && $_GET['type'] == 'delete' && isset($_GET['id'])){
+
+    $result = $obj->deleteData('courses', array('id' => $_GET['id']));
+    if($result){
+        $obj->redirect('courses');
+    }
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,8 +56,7 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul>
-                <li class="profile-btn"><a href="javascript:void(0)"><img src="./assets/images/nasc-image.jpg"
-                            alt="profile"></a></li>
+                <li class="profile-btn"><a href="javascript:void(0)"><img src="./assets/images/nasc-image.jpg" alt="profile"></a></li>
             </ul>
         </nav>
     </header>
@@ -53,7 +74,7 @@
             <li><a href="./student.html"><i class="fas fa-users"></i> <span>students</span></a></li>
             <li><a href="./departmet.html"><i class="fas fa-building"></i> <span>Department</span></a></li>
             <li><a href="./courses.html"><i class="fas fa-user-graduate"></i> <span>courses</span></a></li>
-            <li><a href="./setting.html"><i class="fas fa-cog"></i> <span>settings</span></a></li>
+            <li><a href="setting.html"><i class="fas fa-cog"></i> <span>settings</span></a></li>
             <li><a href="#"><i class="fas fa-sign-out-alt"></i> <span>logout</span></a></li>
 
         </ul>
@@ -62,23 +83,39 @@
     <!-- right box start -->
     <section class="right-box">
         <div class="right-box-title">
-            <h1>setting <i class="fas fa-chevron-right"></i></h1>
+            <h1>courses <i class="fas fa-chevron-right"></i></h1>
+            <a href="./add_course.php">Add course</a>
         </div>
-        <div class="profile-form">
-            <h1>Update details</h1>
-            <div class="setting-form">
-                <form action="">
-                    <div class="form-controller">
-                        <label for="name">Username</label>
-                        <input type="email" name="username" id="name" required placeholder="Enter Username">
-                    </div>
-                    <div class="form-controller">
-                        <label for="password">password</label>
-                        <input type="password" name="password" id="password" required placeholder="Enter password">
-                    </div>
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
+        <div class="data-table">
+            <table id="table" class="display">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>departmet</th>
+                        <th>EDC courses</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if ($result) {
+                        $i = 1;
+                        foreach ($result as $val) {
+                            $dep_name = $obj->getData('department', 'dep_name',array('id' => $val['department']));
+                    ?>
+                            <tr>
+                                <td><?php echo $i; ?></td>
+                                <td><?php echo $dep_name[0]['dep_name']; ?></td>
+                                <td><?php echo $val['name']; ?></td>
+                                <td>
+                                    <a id="edit" href="add_course?type=edit&id=<?php echo $val['id']; ?>">Edit</a>
+                                    <a id="delete" href="?type=delete&id=<?php echo $val['id']; ?>">delete</a>
+                                </td>
+                            </tr>
+                        <?php $i++; }  }?>
+
+                </tbody>
+            </table>
         </div>
 
     </section>
@@ -93,11 +130,17 @@
 
     <!-- jquery cdn -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 
     <!-- custom js file -->
     <script src="./assets/js/custom.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable({
+                responsive: true
+            });
+        });
+    </script>
 
 </body>
 
