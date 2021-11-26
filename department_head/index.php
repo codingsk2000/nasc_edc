@@ -1,156 +1,123 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+define('TITLE', 'Home');
+include_once './header.php';
+require_once('../api/config.php');
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NASC-EDC Department Home Page</title>
-    <!-- datatables cdn link -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
-    <!-- custom css file -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <!-- font awesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+$obj = new API();
+if (!isset($_SESSION['token'])) {
+    $obj->redirect('login');
+}
 
-</head>
-
-<body>
-    <header class="header">
-        <nav class="navbar">
-            <div class="logo">
-                <a href="">
-                    <p>NASC <span>EDC</span></p>
-                    <small>Department head</small>
-                </a>
-            </div>
-            <form action="" class="search-form">
-                <div class="form-controller">
-                    <input type="text" name="search" id="search" placeholder="Search..">
-                    <input type="button" id="search-btn" value="Search">
-                </div>
-            </form>
-            <button class="toggle-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul>
-                <li class="profile-btn"><a href="javascript:void(0)"><img src="./assets/images/nasc-image.jpg" alt="profile"></a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class="profile-menu">
-        <ul>
-            <li><a href=""><i class="fas fa-user-cog"></i> setting</a></li>
-            <li><a href=""><i class="fas fa-sign-out-alt"></i> logout </a></li>
-        </ul>
+?>
+<!-- right box start -->
+<section class="right-box">
+    <div class="right-box-title">
+        <h1>Dashboard <i class="fas fa-chevron-right"></i></h1>
     </div>
-    <!-- left box start -->
-    <section class="left-box">
-        <ul>
-            <li class="active"><a href="./index.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
-            <li><a href="./student.html"><i class="fas fa-users"></i> <span>students</span></a></li>
-            <li><a href="./departmet.html"><i class="fas fa-building"></i> <span>Department</span></a></li>
-            <li><a href="./courses.html"><i class="fas fa-user-graduate"></i> <span>courses</span></a></li>
-            <li><a href="./setting.html"><i class="fas fa-cog"></i> <span>settings</span></a></li>
-            <li><a href="./login"><i class="fas fa-sign-out-alt"></i> <span>logout</span></a></li>
+    <!-- datatable start -->
+    <div class="data-table">
+        <table id="table" class="display">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>EDC Courses</th>
+                    <th>total students registered</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Row 1 Data 1</td>
+                    <td>Row 1 Data 2</td>
+                    <td>Row 1 Data 2</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Row 1 Data 1</td>
+                    <td>Row 1 Data 2</td>
+                    <td>Row 1 Data 2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Row 2 Data 2</td>
+                    <td>Row 1 Data 1</td>
+                    <td>Row 1 Data 2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-        </ul>
-    </section>
-    <!-- left box end -->
-    <!-- right box start -->
-    <section class="right-box">
-        <div class="right-box-title">
-            <h1>Dashboard <i class="fas fa-chevron-right"></i></h1>
-        </div>
-        <!-- datatable start -->
-        <div class="data-table">
-            <table id="table" class="display">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>EDC Courses</th>
-                        <th>total students registered</th>
-                        <th>action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Row 1 Data 1</td>
-                        <td>Row 1 Data 2</td>
-                        <td>Row 1 Data 2</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Row 1 Data 1</td>
-                        <td>Row 1 Data 2</td>
-                        <td>Row 1 Data 2</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Row 2 Data 2</td>
-                        <td>Row 1 Data 1</td>
-                        <td>Row 1 Data 2</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <!-- datatable end -->
 
-        <!-- datatable end -->
 
-        <div class="card">
-            <div class="icon">
-                <i class="fas fa-users fa-5x"></i>
-            </div>
-            <div class="content">
-                <small>Registerd Students</small>
-                <h3>200</h3>
-            </div>
-        </div>
-
+    <a href="./department" class="card-link">
         <div class="card">
             <div class="icon">
                 <i class="fas fa-building fa-5x"></i>
             </div>
             <div class="content">
                 <small>total Departments</small>
-                <h3>200</h3>
+                <h3>
+
+                    <?php
+                    $result = $obj->getData('department', 'id');
+                    if ($result) {
+                        echo sizeof($result);
+                    } else {
+                        echo 0;
+                    }
+
+                    ?>
+                </h3>
             </div>
         </div>
+    </a>
 
+    <a href="./courses" class="card-link">
         <div class="card">
             <div class="icon">
                 <i class="fas fa-user-graduate fa-5x"></i>
             </div>
             <div class="content">
                 <small>total courses</small>
-                <h3>2000000</h3>
+                <h3>
+                    <?php
+                    $result = $obj->getData('courses', 'id');
+                    if ($result) {
+                        echo sizeof($result);
+                    } else {
+                        echo 0;
+                    }
+
+                    ?>
+                </h3>
             </div>
         </div>
+    </a>
 
+    <a href="./student" class="card-link">
+        <div class="card">
+            <div class="icon">
+                <i class="fas fa-users fa-5x"></i>
+            </div>
+            <div class="content">
+                <small>Registerd Students</small>
+                <h3>
+                    <?php
+                    $result = $obj->getData('students', 'id');
+                    if ($result) {
+                        echo sizeof($result);
+                    } else {
+                        echo 0;
+                    }
+                    ?>
+                </h3>
+            </div>
+        </div>
+    </a>
 
-    </section>
-    <!-- right box end -->
+</section>
+<!-- right box end -->
 
-    <!-- footer section start -->
-    <footer class="footer">
-        <p>copyright &copy; <span class="footer-date"></span>| All rights reserved</p>
-    </footer>
-
-    <!-- footer section end -->
-    <!-- jquery cdn -->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-
-    <!-- custom js file -->
-    <script src="./assets/js/custom.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#table').DataTable({
-                responsive: true
-            });
-        });
-    </script>
-</body>
-
-</html>
+<?php include_once 'footer.php'; ?>

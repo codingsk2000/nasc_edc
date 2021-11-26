@@ -92,7 +92,7 @@ class API extends db
         }
         $result = $this->con->query($sql);
         if($result){
-            return 1;
+            return array('status'=>1,'insert_id'=>$this->con->insert_id);
         }else{
             return 0;
         }
@@ -157,14 +157,12 @@ class API extends db
     // login function
     public function login($username, $password, $department = '')
     {
-        $username = $this->get_safe_value($username);
-        $password = $this->get_safe_value($password);
-        $department = $this->get_safe_value($department);
+        $password = md5($password);
         $condition_arr = array('username'=>$username,'password'=>$password);
           if ($department != '') {
             $condition_arr = array('username'=>$username,'password'=>$password,'department'=>$department);
          }
-        $row = $this->getData('department_head','id',$condition_arr);$condition_arr = array('id'=>$row[0]['id']);
+        $row = $this->getData('department_head','id',$condition_arr);
         if ($row) {
             $token = openssl_random_pseudo_bytes(16);
             $token = bin2hex($token);

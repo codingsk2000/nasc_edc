@@ -1,3 +1,48 @@
+<?php
+
+include_once '../api/config.php';
+
+$obj = new API();
+if (isset($_POST['register_btn'])) {
+    $username = $obj->get_safe_value($_POST['username']);
+    $password = $obj->get_safe_value($_POST['password']);
+    $department = $obj->get_safe_value($_POST['department']);
+    $date = date('y-m-d h:i:s');
+
+    $result = $obj->getData('department', 'id', array('dep_name' => $department));
+    if ($result) {
+        $dep_id = $result[0]['id'];
+    } else {
+        $result = $obj->insertData('department', array('dep_name' => $department, 'created_at' => $date));
+        if ($result) {
+            $dep_id = $result['id'];
+            $isExist = true;
+            $name = $username;
+            $pass = $password;
+            $dept = $department;
+        }
+    }
+
+    $result = $obj->getData('department_head', 'id', array('department' => $dep_id));
+    if ($result) {
+        $msg = 'user already exist';
+    } else {
+        $password = md5($password);
+        $result = $obj->insertData('department_head', array('username' => $username, 'password' => $password, 'department' => $dep_id, 'created_at' => $date));
+        if ($isExist) {
+            $msg = "department Added click on register button";
+        } else {
+            $obj->redirect('login');
+        }
+    }
+}
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +50,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NASC-EDC Department Home Page</title>
+    <title>NASC-EDC Department Register Page</title>
     <!-- custom css file -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- font awesome cdn -->
@@ -17,39 +62,31 @@
     <div class="login">
         <div class="login-form">
             <h1>register</h1>
+            <?php if (isset($msg)) {
+                echo "<div class='msg'> $msg </div>";
+            } ?>
             <div class="form-container">
-                <form action="">
+                <form method="post">
                     <div class="form-controller">
                         <label for="departmet">Department</label>
-                        <select name="department" id="department">
-                            <option>-- selec department --</option>
-                            <option value="bca">bca</option>
-                            <option value="bca">bba</option>
-                            <option value="bca">cshm</option>
-                            <option value="bca">b.sc</option>
-                            <option value="bca">b.com</option>
-                        </select>
+                        <input type="text" name="department" value="<?php if (isset($dept)) { echo $dept;} ?>" id="department" required placeholder="Enter department name">
                     </div>
                     <div class="form-controller">
                         <label for="name">Username</label>
-                        <input type="email" name="username" id="name" required placeholder="Enter Username">
+                        <input type="email" name="username" value="<?php if(isset($name)){  echo $name;  } ?>" id="name" required placeholder="Enter Username">
                     </div>
                     <div class="form-controller">
                         <label for="password">password</label>
-                        <input type="password" name="password" id="password" required placeholder="Enter password">
+                        <input type="password" name="password" value="<?php if(isset($pass)){echo $pass;} ?>" id="password" required placeholder="Enter password">
                     </div>
                     <div class="form-footer">
-                        <input type="submit" value="register">
-                        <a href="./login.html">login here ?</a>
+                        <input type="submit" name="register_btn" value="register">
+                        <a href="./login">login here ?</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-    <!-- custom js file -->
-    <script src="./assets/js/custom.js"></script>
-
 </body>
 
 </html>

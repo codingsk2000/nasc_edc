@@ -1,18 +1,22 @@
 <?php
-include '../api/config.php';
+include_once '../api/config.php';
 
 $obj = new API();
 if (isset($_POST['login'])) {
+    $username = $obj->get_safe_value($_POST['username']);
+    $password = $obj->get_safe_value($_POST['password']);
+    $department = $obj->get_safe_value($_POST['department']);
+
     if (isset($_POST['remember']) && $_POST['remember'] != '') {
-        setcookie('username', $_POST['username'], time() + (86400 * 30));
-        setcookie('password', $_POST['password'], time() + (86400 * 30));
-        setcookie('dep_id', $_POST['department'], time() + (86400 * 30));
+        setcookie('username', $username, time() + (86400 * 30));
+        setcookie('password',$password , time() + (86400 * 30));
+        setcookie('dep_id', $department, time() + (86400 * 30));
     }else{
         setcookie('username', $_POST['username'], time() -1);
         setcookie('password', $_POST['password'], time() -1);
         setcookie('dep_id', $_POST['department'], time() -1);
     }
-    $result = $obj->login($_POST['username'], $_POST['password'], $_POST['department']);
+    $result = $obj->login($username, $password, $department);
     if ($result) {
         $obj->redirect('index.php');
     } else {
@@ -32,7 +36,7 @@ $data = $obj->getData('department');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NASC-EDC Department Home Page</title>
+    <title>NASC-EDC Department Login Page</title>
     <!-- custom css file -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- font awesome cdn -->
@@ -81,16 +85,12 @@ $data = $obj->getData('department');
                     </div>
                     <div class="form-footer">
                         <input type="submit" name="login" value="login">
-                        <a href="./register.html">Register here ?</a>
+                        <a href="./register">Register here ?</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-    <!-- custom js file -->
-    <!-- <script src="./assets/js/custom.js"></script> -->
-
 </body>
 
 </html>
