@@ -12,4 +12,5 @@ window.onload = () => {
 
     //footer date
     document.querySelector('.footer-date').innerHTML = new Date().getFullYear();
+
 }

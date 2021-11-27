@@ -1,5 +1,6 @@
 <?php
 define('TITLE', 'Department');
+define('PAGE', 'department');
 require_once('./header.php');
 require_once('../api/config.php');
 

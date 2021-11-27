@@ -1,5 +1,6 @@
 <?php
 define('TITLE', 'courses');
+define('PAGE', 'course');
 require_once('./header.php');
 require_once('../api/config.php');
 

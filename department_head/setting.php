@@ -1,5 +1,6 @@
 <?php
 define('TITLE', 'setting');
+define('PAGE', 'setting');
 require_once('./header.php');
 require_once('../api/config.php');
 $obj = new API();

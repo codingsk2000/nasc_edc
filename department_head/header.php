@@ -48,11 +48,11 @@
     <!-- left box start -->
     <section class="left-box">
         <ul>
-            <li class="active"><a href="./index"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
-            <li><a href="./student"><i class="fas fa-users"></i> <span>students</span></a></li>
-            <li><a href="./department"><i class="fas fa-building"></i> <span>Department</span></a></li>
-            <li><a href="./courses"><i class="fas fa-user-graduate"></i> <span>courses</span></a></li>
-            <li><a href="./setting"><i class="fas fa-cog"></i> <span>settings</span></a></li>
+            <li class="<?php if(PAGE == 'home'){echo 'active';} ?>"><a href="./index"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+            <li class="<?php if(PAGE == 'students'){echo 'active';} ?>"><a href="./student"><i class="fas fa-users"></i> <span>students</span></a></li>
+            <li class="<?php if(PAGE == 'department'){echo 'active';} ?>"><a href="./department"><i class="fas fa-building"></i> <span>Department</span></a></li>
+            <li class="<?php if(PAGE == 'course'){echo 'active';} ?>"><a href="./courses"><i class="fas fa-user-graduate"></i> <span>courses</span></a></li>
+            <li class="<?php if(PAGE == 'setting'){echo 'active';} ?>"><a href="./setting"><i class="fas fa-cog"></i> <span>settings</span></a></li>
             <li><a href="./logout"><i class="fas fa-sign-out-alt"></i> <span>logout</span></a></li>
 
         </ul>

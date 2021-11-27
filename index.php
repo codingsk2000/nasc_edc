@@ -15,7 +15,7 @@ if (isset($_POST['submit-btn'])) {
     $date = date('y-m-d h:i:s');
     $condition_arr = array('register_no' => $regNo, 'name' => $name, 'email' => $email, 'mobile' => $mobile, 'dept' => $dep, 'course' => $course, 'year' => $year, 'created_at' => $date);
     $result = $obj->insertData('students', $condition_arr);
-    
+
     if ($result) {
         $msg = 'registered successfully you can see your course details in dashboard section';
     } else {
@@ -23,6 +23,12 @@ if (isset($_POST['submit-btn'])) {
     }
 }
 ?>
+
+
+<!-- loader section -->
+<div class="loader">
+    <img src="./assets/images/loading.gif" alt="loading..">
+</div>
 
 <!-- banner section start -->
 <section class="banner">
@@ -43,7 +49,7 @@ if (isset($_POST['submit-btn'])) {
     <?php if (isset($msg)) {
         echo "<div class='msg'> $msg </div>";
     } ?>
-    
+
     <div class="form-container">
         <h3>Fill your details</h3>
         <form method="POST">
@@ -115,5 +121,68 @@ if (isset($_POST['submit-btn'])) {
     </div>
 </section>
 <!-- confirm dialog section end -->
+<script>
+    // department select code
+    const dep = document.querySelector('#department');
+    let course = document.querySelector('#course');
+    dep.addEventListener('change', () => {
+        const dep_id = dep.value;
+        course.innerHTML = '';
+        // loader class
+        document.querySelector('.loader').classList.add('active');
+
+        //http request
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "getdep.php", true);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // Response
+                var response = this.responseText;
+                response = JSON.parse(response);
+                if (response.status == 0) {
+                    var opt = document.createElement('option');
+                    var text = document.createTextNode(response.msg);
+                    var attr = document.createAttribute('disabled');
+                    attr = document.createAttribute('selected');
+                    attr = document.createAttribute('value');
+                    opt.setAttributeNode(attr);
+                    opt.appendChild(text);
+                    course.appendChild(opt);
+                } else {
+                    response.forEach((e) => {
+                        var opt = document.createElement('option');
+                        var text = document.createTextNode(e.name);
+                        var attr = document.createAttribute('value');
+                        attr.value = e.id;
+                        opt.setAttributeNode(attr);
+                        opt.appendChild(text);
+                        course.appendChild(opt);
+                    });
+                }
+
+            }
+            setTimeout(() => {
+                // loader class
+                document.querySelector('.loader').classList.remove('active')
+            }, 900);
+        };
+        var data = {
+            dep_id: dep_id
+        };
+        xhttp.send(JSON.stringify(data));
+    });
+
+
+    document.querySelector('#submit-btn').onclick = () => {
+        document.querySelector('.dialog').classList.add('active');
+        document.querySelector('#final-submit-btn').classList.add('active');
+        document.querySelector('#submit-btn').classList.add('disabled');
+    };
+    document.querySelector('#close').onclick = () => {
+        document.querySelector('.dialog').classList.remove('active');
+
+    };
+</script>
 
 <?php include 'footer.php'; ?>
