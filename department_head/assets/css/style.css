@@ -554,6 +554,9 @@ form input{
     justify-content: flex-start;
     margin-left: 8rem;
   }
+  .right-box .card-container{
+    flex-direction: column;
+  }
   .right-box .card{
     width: 90%;
     margin: 1rem auto;
@@ -588,6 +591,9 @@ form input{
     width: 95%;
     margin: 1rem auto;
   } 
+  .right-box{
+    margin-left: 5rem;
+  }
 
   /* login form css */
   .login .login-form{

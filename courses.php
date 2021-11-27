@@ -25,7 +25,7 @@ $result = $obj->getData('courses', 'name');
                     <li><i class="fas fa-chevron-right"></i> <?php echo $val['name']; ?></li>
             <?php }
             } else {
-                echo '<div>NO courses available</div>';
+                echo '<div>No courses available</div>';
             } ?>
 
         </ul>

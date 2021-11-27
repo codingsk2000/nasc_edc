@@ -69,19 +69,24 @@ if (isset($_POST['register_btn'])) {
                 <form method="post">
                     <div class="form-controller">
                         <label for="departmet">Department</label>
-                        <input type="text" name="department" value="<?php if (isset($dept)) { echo $dept;} ?>" id="department" required placeholder="Enter department name">
+                        <input type="text" name="department" value="<?php if (isset($dept)) {
+                                                                        echo $dept;
+                                                                    } ?>" id="department" required placeholder="Enter department name">
                     </div>
                     <div class="form-controller">
                         <label for="name">Username</label>
-                        <input type="email" name="username" value="<?php if(isset($name)){  echo $name;  } ?>" id="name" required placeholder="Enter Username">
+                        <input type="email" name="username" value="<?php if (isset($name)) {
+                                                                        echo $name;
+                                                                    } ?>" id="name" required placeholder="Enter Username">
                     </div>
                     <div class="form-controller">
                         <label for="password">password</label>
-                        <input type="password" name="password" value="<?php if(isset($pass)){echo $pass;} ?>" id="password" required placeholder="Enter password">
+                        <input type="password" name="password" value="<?php if (isset($pass)) {
+                                                                            echo $pass;
+                                                                        } ?>" id="password" required placeholder="Enter password">
                     </div>
                     <div class="form-footer">
                         <input type="submit" name="register_btn" value="register">
-                        <a href="./login">login here ?</a>
                     </div>
                 </form>
             </div>

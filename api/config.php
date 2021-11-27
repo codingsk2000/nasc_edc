@@ -34,7 +34,9 @@ class API extends db
 
     public function redirect($link)
     {
-        header("location:$link");
+        echo "<script>
+            window.location.href = '".$link."'
+        </script>";
         die();
     }
 
