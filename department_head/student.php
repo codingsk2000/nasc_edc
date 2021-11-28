@@ -7,7 +7,6 @@ $obj = new API();
 if (!isset($_SESSION['token'])) {
     $obj->redirect('login');
 }
-$result = $obj->getData('students');
 
 // delete code
 if (isset($_GET['type']) && $_GET['type'] == 'delete' && isset($_GET['id'])) {
@@ -40,6 +39,9 @@ if (isset($_GET['type']) && $_GET['type'] == 'delete' && isset($_GET['id'])) {
             <tbody>
 
                 <?php
+                $dept_id = $obj->getData('department_head','department',array('token'=>$_SESSION['token']));
+                $dept_id = $dept_id[0]['department'];
+                $result = $obj->getData('students', '*', array('dept'=>$dept_id));
                 if ($result) {
                     $i = 1;
                     foreach ($result as $val) {

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NASC-EDC Department -  <?php echo TITLE; ?> page</title>
+    <title>NASC-EDC Department - <?php echo TITLE; ?> page</title>
     <!-- datatables cdn link -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
     <!-- custom css file -->
@@ -25,9 +25,9 @@
                     <small>Department head</small>
                 </a>
             </div>
-            <form action="" class="search-form">
+            <form class="search-form">
                 <div class="form-controller">
-                    <input type="text" name="search" id="search" placeholder="Search..">
+                    <input type="search" onchange="showData(this.value)" name="search" id="search" placeholder="Search..">
                     <input type="button" id="search-btn" value="Search">
                 </div>
             </form>
@@ -35,7 +35,7 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul>
-                <li class="profile-btn"><a href="javascript:void(0)"><img src="./assets/images/nasc-image.jpg" alt="profile"></a></li>
+                <li class="profile-btn"><a href="javascript:void(0)"><img src="./assets/images/nasc-image.jpg" alt="profile"></a><i class="fas fa-sort-down"></i></li>
             </ul>
         </nav>
     </header>
@@ -48,11 +48,21 @@
     <!-- left box start -->
     <section class="left-box">
         <ul>
-            <li class="<?php if(PAGE == 'home'){echo 'active';} ?>"><a href="./index"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
-            <li class="<?php if(PAGE == 'students'){echo 'active';} ?>"><a href="./student"><i class="fas fa-users"></i> <span>students</span></a></li>
-            <li class="<?php if(PAGE == 'department'){echo 'active';} ?>"><a href="./department"><i class="fas fa-building"></i> <span>Department</span></a></li>
-            <li class="<?php if(PAGE == 'course'){echo 'active';} ?>"><a href="./courses"><i class="fas fa-user-graduate"></i> <span>courses</span></a></li>
-            <li class="<?php if(PAGE == 'setting'){echo 'active';} ?>"><a href="./setting"><i class="fas fa-cog"></i> <span>settings</span></a></li>
+            <li class="<?php if (PAGE == 'home') {
+                            echo 'active';
+                        } ?>"><a href="./index"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+            <li class="<?php if (PAGE == 'students') {
+                            echo 'active';
+                        } ?>"><a href="./student"><i class="fas fa-users"></i> <span>students</span></a></li>
+            <li class="<?php if (PAGE == 'department') {
+                            echo 'active';
+                        } ?>"><a href="./department"><i class="fas fa-building"></i> <span>Department</span></a></li>
+            <li class="<?php if (PAGE == 'course') {
+                            echo 'active';
+                        } ?>"><a href="./courses"><i class="fas fa-user-graduate"></i> <span>courses</span></a></li>
+            <li class="<?php if (PAGE == 'setting') {
+                            echo 'active';
+                        } ?>"><a href="./setting"><i class="fas fa-cog"></i> <span>settings</span></a></li>
             <li><a href="./logout"><i class="fas fa-sign-out-alt"></i> <span>logout</span></a></li>
 
         </ul>

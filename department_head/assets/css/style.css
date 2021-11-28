@@ -151,6 +151,15 @@ form input{
 }
 .header .navbar li{
   list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header .navbar li i{
+  color: var(--white);
+  font-size: 2rem;
+  margin-left: .5rem;
+  margin-top: -1rem;
 }
 .header ul li:first-child img{
   background: var(--white);
@@ -197,7 +206,7 @@ form input{
   width: 40rem;
   display: flex;
 } 
-.header .search-form input[type='text']{
+.header .search-form input[type='search']{
   padding: .7rem 1rem;
   width: 80%;
   border-top-left-radius: .5rem;
@@ -566,7 +575,7 @@ form input{
     margin-left: 0;
   }
 
-  .header ul li:first-child img{
+  .header ul li:first-child{
     display: none;
   }
 
