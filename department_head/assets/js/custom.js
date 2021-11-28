@@ -13,4 +13,8 @@ window.onload = () => {
     //footer date
     document.querySelector('.footer-date').innerHTML = new Date().getFullYear();
 
+    window.onscroll = () => {
+        document.querySelector('.profile-menu').classList.remove('active');
+    }
+
 }

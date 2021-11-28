@@ -172,7 +172,7 @@ class API extends db
             $this->updateData('department_head',$condition_arr,'id',$row[0]['id']);
             $_SESSION['token'] = $token;
             return 1;
-        } else {
+        } else {    
             return 0;
         }
     }

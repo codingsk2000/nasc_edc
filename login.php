@@ -1,4 +1,6 @@
 <?php
+define('TITLE', 'login');
+define('PAGE', 'login');
 require_once('./header.php');
 ?>
 

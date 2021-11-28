@@ -66,7 +66,7 @@ a{
   padding-left: 1rem;
 }
 
-.btn-main:hover{
+.btn-main:hover, .btn-main.active{
   background-color: var(--white);
   color: var(--orange)!important;
   border-color: transparent;
@@ -168,9 +168,6 @@ form input{
 .navbar li#dashboard{
   display: none;
 }
-.navbar li#dashboard a{
-    color: var(--orange)!important;
-}
 .navbar li:hover a{
   color: var(--orange)!important;
   transition:0.3s ease;
@@ -216,9 +213,14 @@ form input{
 
 .banner h3{
   font-size: 2.1rem;
-  color: rgb(253, 253, 253);
+  /* color: rgb(253, 253, 253); */
+  color: var(--orange);
   letter-spacing: .2rem;
   text-transform: uppercase;
+  background: #f2f2f2;
+  border-radius: 1rem;
+  display: inline-block;
+  padding: 1rem 2rem;
 }
 .banner h1{
   font-size: 4rem;

@@ -1,8 +1,11 @@
 <?php
-
 include_once '../api/config.php';
-
 $obj = new API();
+
+if(isset($_SESSION['token'])){
+    $obj->redirect('index');
+}
+
 if (isset($_POST['register_btn'])) {
     $username = $obj->get_safe_value($_POST['username']);
     $password = $obj->get_safe_value($_POST['password']);

@@ -1,7 +1,11 @@
 <?php
 include_once '../api/config.php';
-
 $obj = new API();
+
+if (isset($_SESSION['token'])) {
+    $obj->redirect('index');
+}
+
 if (isset($_POST['login'])) {
     $username = $obj->get_safe_value($_POST['username']);
     $password = $obj->get_safe_value($_POST['password']);
@@ -9,12 +13,12 @@ if (isset($_POST['login'])) {
 
     if (isset($_POST['remember']) && $_POST['remember'] != '') {
         setcookie('username', $username, time() + (86400 * 30));
-        setcookie('password',$password , time() + (86400 * 30));
+        setcookie('password', $password, time() + (86400 * 30));
         setcookie('dep_id', $department, time() + (86400 * 30));
-    }else{
-        setcookie('username', $_POST['username'], time() -1);
-        setcookie('password', $_POST['password'], time() -1);
-        setcookie('dep_id', $_POST['department'], time() -1);
+    } else {
+        setcookie('username', $_POST['username'], time() - 1);
+        setcookie('password', $_POST['password'], time() - 1);
+        setcookie('dep_id', $_POST['department'], time() - 1);
     }
     $result = $obj->login($username, $password, $department);
     if ($result) {
@@ -61,7 +65,9 @@ $data = $obj->getData('department');
                             if ($data) {
                                 foreach ($data as $val) { ?>
 
-                                    <option <?php if(isset($_COOKIE['dep_id']) && $_COOKIE['dep_id'] == $val['id']){echo 'selected';} ?> value="<?php echo $val['id']; ?>"><?php echo $val['dep_name'] ?></option>
+                                    <option <?php if (isset($_COOKIE['dep_id']) && $_COOKIE['dep_id'] == $val['id']) {
+                                                echo 'selected';
+                                            } ?> value="<?php echo $val['id']; ?>"><?php echo $val['dep_name'] ?></option>
 
                             <?php }
                             } ?>
@@ -80,7 +86,9 @@ $data = $obj->getData('department');
                                                         } ?>" name="password" id="password" required placeholder="Enter password">
                     </div>
                     <div class="remember-me">
-                        <input type="checkbox" <?php if(isset($_COOKIE['username'])){echo 'checked';} ?> name="remember" id="remember">
+                        <input type="checkbox" <?php if (isset($_COOKIE['username'])) {
+                                                    echo 'checked';
+                                                } ?> name="remember" id="remember">
                         <label for="remember">remember me</label>
                     </div>
                     <div class="form-footer">

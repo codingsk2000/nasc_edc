@@ -1,4 +1,6 @@
 <?php
+define('TITLE','Home');
+define('PAGE','home');
 require_once('./header.php');
 require_once('./api/config.php');
 $obj = new API();
@@ -55,7 +57,7 @@ if (isset($_POST['submit-btn'])) {
         <form method="POST">
             <div class="form-controller">
                 <label for="registerNo">Register No.</label>
-                <input type="text" name="regNo" required id="registerNo" placeholder="Enter Your Register No." value="">
+                <input type="text" class="text-uppercase" name="regNo" required id="registerNo" placeholder="Enter Your Register No." value="">
             </div>
             <div class="form-controller">
                 <label for="name">Name</label>
@@ -73,10 +75,10 @@ if (isset($_POST['submit-btn'])) {
                 <label>Year</label>
                 <select id="year" name="year" required>
                     <option value="" disabled selected>--select Year--</option>
-                    <option value="1">1st</option>
-                    <option value="2">2nd</option>
-                    <option value="3">3rd</option>
-                    <option value="4">4th</option>
+                    <!-- <option value="1">1st</option> -->
+                    <option value="2">2<sup>nd</sup></option>
+                    <option value="3">3<sup>rd</sup></option>
+                    <!-- <option value="4">4th</option> -->
 
                 </select>
             </div>

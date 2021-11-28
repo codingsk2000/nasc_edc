@@ -1,4 +1,6 @@
 <?php
+define('TITLE', 'course');
+define('PAGE', 'course');
 require_once('./header.php');
 require_once('./api/config.php');
 $obj = new API();
