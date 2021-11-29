@@ -25,12 +25,12 @@
                     <small>Department head</small>
                 </a>
             </div>
-            <form class="search-form">
+            <!-- <form class="search-form">
                 <div class="form-controller">
                     <input type="search" onchange="showData(this.value)" name="search" id="search" placeholder="Search..">
                     <input type="button" id="search-btn" value="Search">
                 </div>
-            </form>
+            </form> -->
             <button class="toggle-btn">
                 <i class="fas fa-bars"></i>
             </button>

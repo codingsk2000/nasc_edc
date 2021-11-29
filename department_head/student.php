@@ -16,11 +16,17 @@ if (isset($_GET['type']) && $_GET['type'] == 'delete' && isset($_GET['id'])) {
         $obj->redirect('student');
     }
 }
+
+$dept_id = $obj->getData('department_head', 'department', array('token' => $_SESSION['token']));
+$dept_id = $dept_id[0]['department'];
+$result = $obj->getData('students', '*', array('dept' => $dept_id));
+
 ?>
 <!-- right box start -->
 <section class="right-box">
     <div class="right-box-title">
         <h1>students <i class="fas fa-chevron-right"></i></h1>
+        <a href="./print_student.php?dep_id=<?php echo $dept_id; ?>" class="print-btn"><i class="fas fa-print"></i> print</a>
     </div>
     <div class="data-table">
         <table id="table" class="display">
@@ -39,9 +45,6 @@ if (isset($_GET['type']) && $_GET['type'] == 'delete' && isset($_GET['id'])) {
             <tbody>
 
                 <?php
-                $dept_id = $obj->getData('department_head','department',array('token'=>$_SESSION['token']));
-                $dept_id = $dept_id[0]['department'];
-                $result = $obj->getData('students', '*', array('dept'=>$dept_id));
                 if ($result) {
                     $i = 1;
                     foreach ($result as $val) {

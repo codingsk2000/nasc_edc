@@ -202,7 +202,7 @@ form input{
 }
 
 /* search form start*/
-.header .search-form .form-controller{
+/* .header .search-form .form-controller{
   width: 40rem;
   display: flex;
 } 
@@ -223,7 +223,7 @@ form input{
 }
 .header .search-form input[type='button']:hover{
   color: var(--orange);
-}
+} */
 /* search form end */
 
 /* header section end */
@@ -593,9 +593,9 @@ form input{
 }
 
 @media(max-width:596px){
-  .header .search-form .form-controller{
+  /* .header .search-form .form-controller{
     display: none;
-  }
+  } */
   .right-box .card{
     width: 95%;
     margin: 1rem auto;
