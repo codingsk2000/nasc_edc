@@ -66,14 +66,15 @@ if (isset($_GET['dep_id']) && $_GET['dep_id'] == $dept_id) {
             .container {
                 width: 100%;
             }
-            @page{
+
+            @page {
                 margin: 2rem;
             }
         }
     </style>
 </head>
 
-<body>
+<body id="body">
     <h2 class="print-title"><?php echo $dep_name[0]['dep_name']; ?> students list (EDC)</h2>
     <div class="container">
         <table class="table" border="1">
@@ -116,6 +117,12 @@ if (isset($_GET['dep_id']) && $_GET['dep_id'] == $dept_id) {
     </div>
     <script>
         window.print();
+        window.onafterprint = (e) => {
+            setTimeout(() => {
+                window.location.href = './student.php';
+            }, 500)
+
+        }
     </script>
 </body>
 
