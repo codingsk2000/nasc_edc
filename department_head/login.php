@@ -30,7 +30,7 @@ if (isset($_POST['login'])) {
 
 // get department information
 
-$data = $obj->getData('department','id,dep_name',array(''),'id');
+$data = $obj->getData('department', 'id,dep_name', array(''), 'id');
 
 ?>
 <!DOCTYPE html>
@@ -87,8 +87,8 @@ $data = $obj->getData('department','id,dep_name',array(''),'id');
                     </div>
                     <div class="remember-me">
                         <input checked type="checkbox" <?php if (isset($_COOKIE['username'])) {
-                                                    echo 'checked';
-                                                } ?> name="remember" id="remember">
+                                                            echo 'checked';
+                                                        } ?> name="remember" id="remember">
                         <label for="remember">remember me</label>
                     </div>
                     <div class="form-footer">

@@ -120,7 +120,7 @@ if (isset($_GET['dep_id']) && $_GET['dep_id'] == $dept_id) {
         window.onafterprint = (e) => {
             setTimeout(() => {
                 window.location.href = './student.php';
-            }, 500)
+            }, 1000);
 
         }
     </script>

@@ -1,6 +1,6 @@
 <?php
-define('TITLE','Home');
-define('PAGE','home');
+define('TITLE', 'Home');
+define('PAGE', 'home');
 require_once('./header.php');
 require_once('./api/config.php');
 $obj = new API();
@@ -15,13 +15,27 @@ if (isset($_POST['submit-btn'])) {
     $year = $obj->get_safe_value($_POST['year']);
     $course = $obj->get_safe_value($_POST['course']);
     $date = date('y-m-d h:i:s');
-    $condition_arr = array('register_no' => $regNo, 'name' => $name, 'email' => $email, 'mobile' => $mobile, 'dept' => $dep, 'course' => $course, 'year' => $year, 'created_at' => $date);
-    $result = $obj->insertData('students', $condition_arr);
 
-    if ($result) {
-        $msg = 'registered successfully you can see your course details in dashboard section';
+    $findUser = $obj->getData('students', 'id', array('register_no' => $regNo));
+    if ($findUser) {
+        $msg = "register no. already exist";
     } else {
-        $msg = 'try again';
+
+        $condition_arr = array('register_no' => $regNo, 'name' => $name, 'email' => $email, 'mobile' => $mobile, 'dept' => $dep, 'course' => $course, 'year' => $year, 'created_at' => $date);
+        $result = $obj->insertData('students', $condition_arr);
+
+        if ($result) {
+            // update max student in course =
+            $total_stu = $obj->getData('courses', 'max_stu', array('id' => $course));
+
+            // $total_stu = $total_stu[0]['total_stu']+1;
+            $result = $obj->updateData('courses', array('max_stu' => $total_stu[0]['max_stu'] + 1), 'id', $course);
+            if ($result) {
+                $msg = 'registered successfully you can see your course details in dashboard section';
+            }
+        } else {
+            $msg = 'try again';
+        }
     }
 }
 ?>
@@ -51,7 +65,6 @@ if (isset($_POST['submit-btn'])) {
     <?php if (isset($msg)) {
         echo "<div class='msg'> $msg </div>";
     } ?>
-
     <div class="form-container">
         <h3>Fill your details</h3>
         <form method="POST">
@@ -76,8 +89,8 @@ if (isset($_POST['submit-btn'])) {
                 <select id="year" name="year" required>
                     <option value="" disabled selected>--select Year--</option>
                     <!-- <option value="1">1st</option> -->
-                    <option value="2">2<sup>nd</sup></option>
-                    <option value="3">3<sup>rd</sup></option>
+                    <option value="2" selected>2<sup>nd</sup></option>
+                    <!-- <option value="3">3<sup>rd</sup></option> -->
                     <!-- <option value="4">4th</option> -->
 
                 </select>
@@ -135,7 +148,7 @@ if (isset($_POST['submit-btn'])) {
 
         //http request
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "getdep.php", true);
+        xhttp.open("POST", "getCourse.php", true);
         xhttp.setRequestHeader("Content-Type", "application/json");
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {

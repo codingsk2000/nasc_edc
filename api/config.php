@@ -35,23 +35,24 @@ class API extends db
     public function redirect($link)
     {
         echo "<script>
-            window.location.href = '".$link."'
+            window.location.href = '" . $link . "'
         </script>";
         die();
     }
 
     // getData function
-    public function getData($table, $field = '*', $condition_arr = array(''), $order_by_field = '', $order_by_type = 'desc', $limit = ''){
+    public function getData($table, $field = '*', $condition_arr = array(''), $order_by_field = '', $order_by_type = 'desc', $limit = '')
+    {
         $sql = "select  $field from $table";
 
         if ($condition_arr != array('')) {
             $sql .= ' where ';
             $c = count($condition_arr);
             $i = 1;
-            foreach($condition_arr as $key => $val){
-                if($i == $c){
+            foreach ($condition_arr as $key => $val) {
+                if ($i == $c) {
                     $sql .= "$key = '$val' ";
-                }else{
+                } else {
                     $sql .= "$key = '$val' and ";
                 }
                 $i++;
@@ -62,49 +63,48 @@ class API extends db
             $sql .= " order by $order_by_field $order_by_type ";
         }
 
-        if($limit != ''){
+        if ($limit != '') {
             $sql .= " limit $limit ";
         }
         $result = $this->con->query($sql);
-        if($result->num_rows > 0){
+        if ($result->num_rows > 0) {
             $data = array();
-            while($row = $result->fetch_assoc()){
+            while ($row = $result->fetch_assoc()) {
                 $data[] = $row;
             }
             return $data;
-        }else{
+        } else {
             return 0;
         }
-
     }
 
     // insert data fuction
-    public function insertData($table,$condition_arr){
+    public function insertData($table, $condition_arr)
+    {
 
         if ($condition_arr != '') {
-        
+
             foreach ($condition_arr as $key => $val) {
-               $fieldArr[] = $key;
-               $valArr[] = $val;
+                $fieldArr[] = $key;
+                $valArr[] = $val;
             }
-            $field = implode(",",$fieldArr);
-            $value = implode("','",$valArr);
-            $value = "'".$value."'";
+            $field = implode(",", $fieldArr);
+            $value = implode("','", $valArr);
+            $value = "'" . $value . "'";
             $sql = "insert into $table($field) values($value)";
         }
         $result = $this->con->query($sql);
-        if($result){
-            return array('status'=>1,'insert_id'=>$this->con->insert_id);
-        }else{
+        if ($result) {
+            return array('status' => 1, 'insert_id' => $this->con->insert_id);
+        } else {
             return 0;
         }
-
     }
 
     //delete data
     public function deleteData($table, $condition_arr)
     {
-        
+
         if ($condition_arr != '') {
 
             $sql = "delete from $table where ";
@@ -120,9 +120,9 @@ class API extends db
             }
         }
         $result = $this->con->query($sql);
-        if($result){
+        if ($result) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
@@ -149,9 +149,9 @@ class API extends db
         }
 
         $result = $this->con->query($sql);
-        if($result){
+        if ($result) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
@@ -160,22 +160,20 @@ class API extends db
     public function login($username, $password, $department = '')
     {
         $password = md5($password);
-        $condition_arr = array('username'=>$username,'password'=>$password);
-          if ($department != '') {
-            $condition_arr = array('username'=>$username,'password'=>$password,'department'=>$department);
-         }
-        $row = $this->getData('department_head','id',$condition_arr);
+        $condition_arr = array('username' => $username, 'password' => $password);
+        if ($department != '') {
+            $condition_arr = array('username' => $username, 'password' => $password, 'department' => $department);
+        }
+        $row = $this->getData('department_head', 'id', $condition_arr);
         if ($row) {
             $token = openssl_random_pseudo_bytes(16);
             $token = bin2hex($token);
-            $condition_arr = array('token'=>$token);
-            $this->updateData('department_head',$condition_arr,'id',$row[0]['id']);
+            $condition_arr = array('token' => $token);
+            $this->updateData('department_head', $condition_arr, 'id', $row[0]['id']);
             $_SESSION['token'] = $token;
             return 1;
-        } else {    
+        } else {
             return 0;
         }
     }
-
-
 }

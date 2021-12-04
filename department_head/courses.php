@@ -8,58 +8,60 @@ $obj = new API();
 if (!isset($_SESSION['token'])) {
     $obj->redirect('login');
 }
-$dp_id = $obj->getData('department_head','department',array('token'=>$_SESSION['token']));
-$result = $obj->getData('courses','*',array('department'=>$dp_id[0]['department']));
+$dp_id = $obj->getData('department_head', 'department', array('token' => $_SESSION['token']));
+$result = $obj->getData('courses', '*', array('department' => $dp_id[0]['department']));
 // delete code
-if(isset($_GET['type']) && $_GET['type'] == 'delete' && isset($_GET['id'])){
+if (isset($_GET['type']) && $_GET['type'] == 'delete' && isset($_GET['id'])) {
 
     $result = $obj->deleteData('courses', array('id' => $_GET['id']));
-    if($result){
+    if ($result) {
         $obj->redirect('courses');
     }
 }
 
 ?>
 
-    <!-- right box start -->
-    <section class="right-box">
-        <div class="right-box-title">
-            <h1>courses <i class="fas fa-chevron-right"></i></h1>
-            <a href="./add_course.php">Add course</a>
-        </div>
-        <div class="data-table">
-            <table id="table" class="display">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>departmet</th>
-                        <th>EDC courses</th>
-                        <th>action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    if ($result) {
-                        $i = 1;
-                        foreach ($result as $val) {
-                            $dep_name = $obj->getData('department', 'dep_name',array('id' => $val['department']));
-                    ?>
-                            <tr>
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $dep_name[0]['dep_name']; ?></td>
-                                <td><?php echo $val['name']; ?></td>
-                                <td>
-                                    <a id="edit" href="add_course?type=edit&id=<?php echo $val['id']; ?>">Edit</a>
-                                    <a id="delete" href="?type=delete&id=<?php echo $val['id']; ?>">delete</a>
-                                </td>
-                            </tr>
-                        <?php $i++; }  }?>
+<!-- right box start -->
+<section class="right-box">
+    <div class="right-box-title">
+        <h1>courses <i class="fas fa-chevron-right"></i></h1>
+        <a href="./add_course.php">Add course</a>
+    </div>
+    <div class="data-table">
+        <table id="table" class="display">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>departmet</th>
+                    <th>EDC courses</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if ($result) {
+                    $i = 1;
+                    foreach ($result as $val) {
+                        $dep_name = $obj->getData('department', 'dep_name', array('id' => $val['department']));
+                ?>
+                        <tr>
+                            <td><?php echo $i; ?></td>
+                            <td><?php echo $dep_name[0]['dep_name']; ?></td>
+                            <td><?php echo $val['name']; ?></td>
+                            <td>
+                                <a id="edit" href="add_course?type=edit&id=<?php echo $val['id']; ?>">Edit</a>
+                                <a id="delete" href="?type=delete&id=<?php echo $val['id']; ?>">delete</a>
+                            </td>
+                        </tr>
+                <?php $i++;
+                    }
+                } ?>
 
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
+    </div>
 
-    </section>
-    <!-- right box end -->
+</section>
+<!-- right box end -->
 
-   <?php include_once 'footer.php'; ?>
+<?php include_once 'footer.php'; ?>

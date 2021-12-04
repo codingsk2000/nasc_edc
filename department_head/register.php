@@ -2,7 +2,7 @@
 include_once '../api/config.php';
 $obj = new API();
 
-if(isset($_SESSION['token'])){
+if (isset($_SESSION['token'])) {
     $obj->redirect('index');
 }
 
@@ -10,6 +10,7 @@ if (isset($_POST['register_btn'])) {
     $username = $obj->get_safe_value($_POST['username']);
     $password = $obj->get_safe_value($_POST['password']);
     $department = $obj->get_safe_value($_POST['department']);
+    $total_stu = $obj->get_safe_value($_POST['total_stu']);
     $date = date('y-m-d h:i:s');
 
     $result = $obj->getData('department', 'id', array('dep_name' => $department));
@@ -31,7 +32,7 @@ if (isset($_POST['register_btn'])) {
         $msg = 'user already exist';
     } else {
         $password = md5($password);
-        $result = $obj->insertData('department_head', array('username' => $username, 'password' => $password, 'department' => $dep_id, 'created_at' => $date));
+        $result = $obj->insertData('department_head', array('username' => $username, 'password' => $password, 'department' => $dep_id, 'total_stu' => $total_stu, 'created_at' => $date));
         if ($isExist) {
             $msg = "department Added click on register button";
         } else {
@@ -75,6 +76,12 @@ if (isset($_POST['register_btn'])) {
                         <input type="text" name="department" value="<?php if (isset($dept)) {
                                                                         echo $dept;
                                                                     } ?>" id="department" required placeholder="Enter department name">
+                    </div>
+                    <div class="form-controller">
+                        <label for="total_stu">total students</label>
+                        <input type="text" name="total_stu" value="<?php if (isset($total_stu)) {
+                                                                        echo $total_stu;
+                                                                    } ?>" id="total_stu" required placeholder=" total no. of students">
                     </div>
                     <div class="form-controller">
                         <label for="name">Username</label>

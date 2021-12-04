@@ -11,11 +11,11 @@
 <!-- custom js file -->
 <script src="./assets/js/custom.js"></script>
 <script>
-        $(document).ready(function() {
-            $('#table').DataTable({
-                responsive: true
-            });
+    $(document).ready(function() {
+        $('#table').DataTable({
+            responsive: true
         });
+    });
 </script>
 </body>
 

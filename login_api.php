@@ -18,6 +18,3 @@ if($result){
 }else{
     print_r(json_encode(array('status'=>0)));
 }
-   
-
-?>

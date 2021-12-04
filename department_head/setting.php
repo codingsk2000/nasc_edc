@@ -10,9 +10,10 @@ if (!isset($_SESSION['token'])) {
 if (isset($_POST['update'])) {
     $username = $obj->get_safe_value($_POST['username']);
     $password = $obj->get_safe_value($_POST['password']);
+    $total_stu = $obj->get_safe_value($_POST['total_stu']);
     $password = md5($password);
 
-    $result = $obj->updateData('department_head', array('username' => $username, 'password' => $password), 'token', $_SESSION['token']);
+    $result = $obj->updateData('department_head', array('username' => $username, 'total_stu' => $total_stu, 'password' => $password), 'token', $_SESSION['token']);
     if ($result) {
         $msg = 'updated successfully';
     } else {
@@ -39,6 +40,10 @@ $result = $obj->getData('department_head', '*', array('token' => $_SESSION['toke
                 <div class="form-controller">
                     <label for="name">Username</label>
                     <input type="email" value="<?php echo $result[0]['username'] ?>" name="username" id="name" required placeholder="Enter Username">
+                </div>
+                <div class="form-controller">
+                    <label for="total_stu">total students</label>
+                    <input type="text" name="total_stu" value="<?php echo $result[0]['total_stu']; ?>" id="total_stu" required placeholder=" total no. of students">
                 </div>
                 <div class="form-controller">
                     <label for="password">password</label>

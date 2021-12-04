@@ -27,8 +27,8 @@ if (!isset($_SESSION['token'])) {
             </thead>
             <tbody>
                 <?php
-                $login_id = $obj->getData('department_head','department',array('token'=>$_SESSION['token']));
-                $result = $obj->getData('department','*',array('id'=>$login_id[0]['department']));
+                $login_id = $obj->getData('department_head', 'department', array('token' => $_SESSION['token']));
+                $result = $obj->getData('department', '*', array('id' => $login_id[0]['department']));
                 if ($result) {
                     $i = 1;
                     foreach ($result as $val) { ?>
