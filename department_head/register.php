@@ -34,8 +34,8 @@ if (isset($_POST['register_btn'])) {
         $password = md5($password);
         $result = $obj->insertData('department_head', array('username' => $username, 'password' => $password, 'department' => $dep_id, 'total_stu' => $total_stu, 'created_at' => $date));
         if ($isExist) {
-            $msg = "department Added click on register button";
-        } else {
+            $msg = "department Added click on register button"; 
+  } else {
             $obj->redirect('login');
         }
     }
@@ -70,7 +70,7 @@ if (isset($_POST['register_btn'])) {
                 echo "<div class='msg'> $msg </div>";
             } ?>
             <div class="form-container">
-                <form method="post">
+                <form method="post" id="register-form">
                     <div class="form-controller">
                         <label for="departmet">Department</label>
                         <input type="text" name="department" value="<?php if (isset($dept)) {
@@ -96,7 +96,7 @@ if (isset($_POST['register_btn'])) {
                                                                         } ?>" id="password" required placeholder="Enter password">
                     </div>
                     <div class="form-footer">
-                        <input type="submit" name="register_btn" value="register">
+                        <input type="submit" name="register_btn" value="register" id="register-btn">
                     </div>
                 </form>
             </div>
