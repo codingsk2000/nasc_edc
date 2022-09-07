@@ -1,0 +1,723 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+:root {
+  --primary-color:#002147;
+  --orange:#F26838;
+  --text-primary:#333333;
+  --text-secondary:#3f444a;
+  --white:#ffffff;
+  --black:#000000;
+  --box-shadow:0 .1rem .5rem rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar{
+  width: .5rem;
+}
+::-webkit-scrollbar-track{
+  background: transparent;
+}
+::-webkit-scrollbar-thumb{
+  width: 100%;
+  background-color: var(--primary-color);
+  border-radius: .5rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  text-decoration: none!important;
+  border: none;
+  outline: none;
+  overflow-x: hidden;
+  /* text-transform: capitalize; */
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;    
+}
+body{
+  position: relative;
+}
+
+/* common css start */
+
+a{
+  color:var(--white)!important;
+  font-size: 2rem;
+}
+.btn-main{
+  border: 1px solid var(--orange);
+  height: 5rem;
+  padding: .5rem 2rem;
+  border-radius: .4rem;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-weight: 600;
+  letter-spacing: .2rem;
+  text-align: center;
+  margin: 0 auto;
+  transition: all .2s linear;
+}
+.btn-main i{
+  padding-left: 1rem;
+}
+
+.btn-main:hover, .btn-main.active{
+  background-color: var(--white);
+  color: var(--orange)!important;
+  border-color: transparent;
+  box-shadow: var(--box-shadow);
+}
+
+h1,h2,h3,h4,h5{
+  color: var(--text-primary);
+}
+p{
+  color: var(--text-secondary);
+}
+form input{
+  text-transform: lowercase!important;
+}
+.msg{
+  background: #08310c;
+  width: 60%;
+  margin: 3rem auto 0;
+  padding: 1rem 2rem;
+  border-radius: .2rem;
+  color: var(--white);
+  font-size: 1.8rem;
+}
+.text-uppercase{
+  text-transform: uppercase!important;
+}
+.loader{
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10000;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  transform: scale(0);
+}
+.loader.active{
+  transform: scale(1);
+}
+.loader img{
+  width: 10rem;
+  height: 10rem;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: .5rem;
+}
+.error_msg{
+  color: red!important;
+  padding: .2rem 0;
+  font-size: 1.2rem;
+}
+
+/* common css end */
+/* top college logo with navbar section */
+.top-navbar{
+  width: 100%;
+  background-color: #fff;
+  padding: 10px 0;
+}
+.top-navbar .nav-container{
+  display: flex;
+  justify-content: space-around;
+}
+.top-navbar .nav-container img{
+  display: inline-block;
+  width: 80px!important;
+  /* height: 150; */
+}
+.top-navbar .nav-container .content{
+  text-align: center;
+}
+.top-navbar .nav-container .content h1{
+  font-size: 35px;
+  color: var(--primary-color)!important;
+  font-weight: bold;
+}
+.top-navbar .nav-container .content p{
+  font-size: 12px;
+  color: var(--primary-color)!important;
+  /* font-weight: bold; */
+}
+
+/* navigation menu */
+.navbar {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 1.5rem 4rem;
+ background-color:var(--primary-color);
+ color: #fff;
+ /* position: relative;
+ top: 0;
+ left: 0;
+ right: 0; */
+ box-shadow: var(--box-shadow);
+ z-index: 1000;
+ /* min-height: 10vh; */
+}
+
+.sm_logout{
+  display: none;
+}
+.navbar .logo{
+  font-size: 3rem;
+  font-weight: 600;
+}
+.navbar .logo span{
+  color: var(--orange);
+}
+
+.navbar ul{
+    display: flex;
+    gap: 2;
+    transition: all .2s linear;
+}
+.navbar li{
+  padding: .5rem .8rem;
+}
+.navbar li.active a{
+  color: var(--orange)!important;
+}
+.navbar li#dashboard{
+  display: none;
+}
+.navbar li:hover a{
+  color: var(--orange)!important;
+  transition:0.3s ease;
+}
+.navbar #btn-toggler{
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.navbar #btn-toggler i{
+  font-size: 2.5rem;
+  color: var(--orange);
+  transition: all .3s ease;
+}
+.navbar #btn-toggler i.fa-times{
+  transform: rotate(-90deg);
+}
+.navbar.active ul{
+  height: 100%;
+  margin-top: 4rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
+
+}
+/* navbar section end */
+
+/* banner section start */
+.banner{
+  /* margin-top: 5vh; */
+  width: 100%;
+  height: 90vh;
+  background-image: linear-gradient(to top right,rgba(0,38,78,0.5),rgba(0,38,78,0.5)),url('../images/nasc-image.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* padding-top: 13vh; */
+  /* padding: 0 .5rem; */
+}
+
+.banner .content{
+  margin-top: -200px;
+}
+
+.banner h3{
+  font-size: 2.1rem;
+  /* color: rgb(253, 253, 253); */
+  color: var(--orange);
+  letter-spacing: .2rem;
+  text-transform: uppercase;
+  background: #f2f2f2;
+  border-radius: 1rem;
+  display: inline-block;
+  padding: 1rem 2rem;
+}
+.banner h1{
+  font-size: 4rem;
+  color: var(--white);
+  letter-spacing: .5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 5px #333333;
+  margin: 1.5rem 0;
+  text-transform: uppercase;
+}
+.banner p{
+  font-size: 2rem;
+  color: #fff;
+}
+.banner .hero-btn{
+  margin-top: 2.5rem;
+  width: 25rem;
+  background-color: var(--white);
+  color: var(--orange)!important;
+  border-color: transparent;
+  box-shadow: var(--box-shadow);
+
+}
+.banner .hero-btn:hover{
+  border: 1px solid var(--orange);
+  background: transparent;
+  color: var(--white)!important;
+}
+
+/* register form code start */
+.register-form{
+  width: 100%;
+  background: rgb(221, 219, 219);
+}
+.register-form h3{
+  text-align: center;
+  font-size: 3rem;
+  padding: 3rem 0 1.5rem;
+}
+.register-form span{
+  color: var(--orange);
+}
+.register-form .form-container{
+  width: 60%;
+  margin: 2rem auto;
+  box-shadow: var(--box-shadow);
+  padding: 2rem 3rem;
+  border-radius: .8rem;
+  background: var(--white);
+}
+.form-container h3{
+  color: var(--orange);
+  padding: .5rem 0;
+}
+.form-container .form-controller{
+  width: 100%;
+  margin-top: .8rem;
+}
+.form-container .form-controller .lebel-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container .form-controller label{
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.form-container .form-controller input, .form-container .form-controller select{
+  width: 100%;
+  border: 1px solid var(--text-secondary);
+  margin-top: 1rem;
+  border-radius: .5rem;
+  padding: 1rem .8rem;
+  font-size: 1.8rem;
+  background: transparent;
+}
+.form-container input[type='submit'],.form-container input[type='button']{
+  width: 10rem;
+  height: 4rem;
+  border-radius: .5rem;
+  color: var(--white);
+  background: var(--orange);
+  margin-top: 3rem;
+  font-size: 2rem;
+  float: left;
+  margin-right: .5rem;
+  cursor: pointer;
+}
+.form-container #submit-btn.disabled{
+  pointer-events: none;
+  background-color: #d68469;
+}
+.form-container #final-submit-btn{
+  display: none;
+}
+.form-container #final-submit-btn.active{
+  display: block;
+}
+
+/* register form code end */
+
+/* confirm dialog section start */
+
+.dialog{
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1001;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0);
+  transition: all .2s linear;
+}
+.dialog.active{
+  transform: scale(1);
+}
+.dialog .dialog-content{
+  background: var(--white);
+  padding: 3rem 4rem;
+  border-radius: .5rem;
+  text-align: center;
+}
+.dialog .dialog-content i{
+  color: var(--orange);
+}
+.dialog .dialog-content h3{
+  margin: 1rem 0;
+  letter-spacing: .2rem;
+  font-size: 1.5rem;
+}
+.dialog .dialog-content p{
+  font-size: 1.2rem;
+}
+
+.dialog .dialog-content a{
+  display: inline-block;
+  color: var(--orange)!important;
+  border: 1px solid var(--orange);
+  padding: .5rem 1.5rem;
+  margin-top: 1rem;
+}
+.dialog .dialog-content a:hover{
+  color: var(--black)!important;
+  background-color: var(--white);
+  border: transparent;
+}
+
+/* confirm dialog section end */
+
+/* footer section start */
+footer{
+  width: 100%;
+  background: var(--primary-color);
+  text-align: center;
+  padding: 1rem 0;
+}
+footer p{
+  color: var(--white);
+  font-size: 1.5rem;
+}
+
+/* footer section end */
+
+/* dashboard page style start */
+.login-form{  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  height: 100vh;
+}
+
+.login-form .form-container{
+  width: 60%;
+  /* margin: 20rem auto 2rem; */
+  box-shadow: var(--box-shadow);
+  padding: 2rem 2rem 2rem;
+  border-radius: .5rem;
+  background-color: var(--white);
+}
+.login-form .form-container .login_logo{
+  display: flex;
+  justify-content: center;
+}
+.login-form .form-container img{
+  width: 100px;
+  display: inline-block;
+  margin: auto!important;
+}
+.login-form .form-controller{
+  margin-bottom: .5rem;
+}
+.login-form  h3{
+  text-align: center;
+  font-size: 3rem;
+  /* padding: 1rem 0; */
+}
+
+.login-form p{
+  float: right;
+  margin-top: 3rem;
+  font-size: 1.2rem;
+}
+.login-form p a{
+  color: var(--orange)!important;
+  font-size: 1.4rem;
+}
+
+/* user details form section start */
+
+.user-details{
+  transform: translateX(100%);
+  transition: all .5s linear;
+}
+.user-details.active{
+  transform: translateX(0%);
+}
+.user-details .form-container{
+  width: 60%;
+  margin: 15rem auto 2rem;
+  box-shadow: var(--box-shadow);
+  padding: 2rem 2rem 2rem;
+  border-radius: .5rem;
+}
+.user-details  h3{
+  text-align: center;
+  font-size: 3rem;
+  padding: 1rem 0;
+}
+.user-details .btn-logout{
+  color: var(--text-primary)!important;
+  display: inline-block;
+  border: 1px solid var(--orange)!important;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  border-radius: .3rem;
+}
+.user-details .btn-logout:hover{
+  background-color: var(--white)!important;
+  color: var(--orange)!important;
+  box-shadow: var(--box-shadow);
+}
+
+/* user details form section end */
+
+/* dashboard page style end */
+
+/* department pages css start */
+.header-banner{
+  margin-top: 8rem;
+  background-image: linear-gradient(to top right,rgba(0,38,78,0.5),rgba(0,38,78,0.5)),url('../images/nasc-image.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 2rem;
+}
+.header-banner h3{
+  color: var(--white);
+  font-size: 2.5rem;
+}
+.department-list{
+  background: #dde2e8;
+  width: 100%;
+  padding: 2rem 5rem;
+}
+.department-list h1{
+  text-align: center;
+  font-size: 3rem;
+  padding: 2rem 0;
+}
+.department-list h1 span{
+  color: var(--orange);
+}
+.department-list .all-list ul{
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  margin-top: 3.5rem;
+}
+.department-list .all-list li{
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 1rem 3rem 2rem;
+  width: 13rem;
+  overflow: auto;
+  float: left;
+
+}
+.department-list .all-list li i{
+  padding-right: .5rem;
+}
+/* departmetn page css end */
+
+/* media query section */
+
+@media(max-width:990px){
+  html{
+    font-size: 55%;
+  }
+  .top-navbar .nav-container img{
+    width:60px!important;
+  }
+  .top-navbar .nav-container .content h1{
+    font-size: 20px!important;
+  }
+  .top-navbar .nav-container .content p{
+    font-size: 10px!important;
+  }
+}
+
+@media(max-width:768px){
+  html{
+    font-size: 50%;
+  }
+  .navbar{
+    flex-direction: column;
+    padding: 1.5rem 2rem;
+  }
+  .navbar #btn-toggler{
+    position: absolute;
+    right: 15px;
+  }
+  .navbar .logo{
+    width: 100%;
+  }
+  .navbar ul{
+    flex-direction: column;
+    width: 100%;
+    height: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  .navbar li{
+    border-top: 1px solid var(--text-secondary);
+    padding: 1rem 0;
+    text-align: center;
+    
+  }
+  .navbar li#dashboard{
+  display: block;
+  }
+  .navbar #btn-toggler{
+    display: block;
+  }
+
+  .navbar .dashboard-btn{
+    display: none;
+  }
+  /* banner section start */
+  .banner{
+    background-position: left;
+  }
+  .header-banner{
+    margin-top: 7rem;
+  }
+  /* form section start */
+  .register-form .form-container,.login-form .form-container,.user-details .form-container{
+    width: 80%;
+  }
+  .department-list .all-list ul{
+    justify-content: center;
+  }
+  .msg{
+    width: 80%;
+  }
+  .top-navbar .nav-container img{
+    width:50px!important;
+  }
+  .top-navbar .nav-container .content h1{
+    font-size: 18px!important;
+  }
+  .top-navbar .nav-container .content p{
+    font-size: 10px!important;
+  }
+  
+}
+
+@media(max-width:630px){
+  .top-navbar .nav-container img{
+    width:70px!important;
+    margin: 0 10px;
+  }
+  .top-navbar .nav-container .content h1{
+    font-size: 22px!important;
+  }
+  .top-navbar .nav-container .content p {
+    font-size: 8px!important;
+  }
+  .top-navbar .nav-container .content p:last-child {
+    font-size: 10px!important;
+  }
+}
+
+@media(max-width:426px){
+  .login-form p{
+    float: left;
+    width: 100%;
+    margin-top: 2rem;
+  }
+  .banner{
+    height: 75vh!important;
+  }
+  .banner .content{
+    margin-top: -70px;
+  }
+  .banner h3{
+    font-size: 1.8rem;
+  }
+  .banner h1{
+    font-size: 3rem;
+    letter-spacing: .3rem;
+    margin: 5px 2px;
+  }
+  .banner p{
+    font-size: 1.8rem;
+    letter-spacing: .1rem;
+    margin: 5px 3px;
+  }
+
+  .department-list{
+    padding: 2rem 1.5rem;
+  }
+
+  .top-navbar .nav-container img{
+    width:70px!important;
+    margin: 0 10px;
+  }
+  .top-navbar .nav-container .content h1{
+    font-size: 19px!important;
+  }
+  .top-navbar .nav-container .content p {
+    font-size: 8px!important;
+  }
+  .top-navbar .nav-container .content p:last-child {
+    font-size: 10px!important;
+  }
+  .sm_logout{
+    display: block;
+  }
+  
+}
+
+@media(max-width:420px){
+  .top-navbar .nav-container img{
+    width:50px!important;
+    margin: 0 10px;
+  }
+  .top-navbar .nav-container .content h1{
+    font-size: 16px!important;
+  }
+  .top-navbar .nav-container .content p {
+    font-size: 5px!important;
+  }
+  .top-navbar .nav-container .content p:last-child {
+    font-size: 8px!important;
+  }
+}
